@@ -63,9 +63,9 @@ let signup_file = (course, name, identification) => {
     /* Creates the text for the file */
     let enrollmentDetails = 'Nombre del estudiante: ' + ip + '\n' +
         'Cédula del estudiante: ' + idn + '\n' + 'Id del curso: ' + subject.id + '\n' +
-        'materia: ' + subject.name + '\n' +
-        'duracion: ' + subject.duration + '\n' +
-        'costo: ' + subject.cost + '\n';
+        'Materia: ' + subject.name + '\n' +
+        'Duracion: ' + subject.duration + '\n' +
+        'Costo: ' + subject.cost + '\n';
     let filename = 'prematricula' + ip + idn;
     let filepath = './enrollments/' + filename;
     fs.writeFile(filepath, enrollmentDetails, (err) => {
