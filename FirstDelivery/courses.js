@@ -32,23 +32,7 @@ let courses = [
 ];
 
 
-function find_subject(a){
-   let subject = courses.find(subject => subject.id === a);
-   console.log(a);
-   return subject;
-}
-
-let showCourses = () => {
-   for(let i = 0; i < courses.length; i++) {
-      setTimeout(function(){
-         console.log(courses[i])
-      }, i*2000);
-   };
-};
-
 module.exports = {
    courses,
-   find_subject,
-   showCourses,
 };
 
