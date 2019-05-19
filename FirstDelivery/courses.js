@@ -43,6 +43,24 @@ let courses = [
       duration: 2, //month
       cost: 2000, //COP
    },
+   {
+      id: 17,
+      name: 'Biologia',
+      duration: 2, //month
+      cost: 2000, //COP
+   },
+   {
+      id: 18,
+      name: 'Dibujo',
+      duration: 2, //month
+      cost: 2000, //COP
+   },
+   {
+      id: 19,
+      name: 'Pintura',
+      duration: 2, //month
+      cost: 2000, //COP
+   },
 ];
 
 /* Exports the list of courses */
