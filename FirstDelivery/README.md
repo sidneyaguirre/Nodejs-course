@@ -49,3 +49,8 @@ Para inscribirse en un curso de su interés:
 (reemplazando los valores después de cada bandera con sus datos y sin las '')
 
 
+#### PASOS:
+1. Clonar repositorio
+2. Acceder al directorio: Nodejs-introduction/FirstDelivery
+3. ejecutar el comando `npm i yargs`
+4. ejecutar la aplicación
