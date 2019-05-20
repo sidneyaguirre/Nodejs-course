@@ -6,14 +6,15 @@ it also has to generate a text file, saving the information of the enrolment and
 #### To access the project:
 It is necessary to execute:
 #### `git checkout node-fundamentals`
-(the branch containing the enrolment activity - first delivery)
+(the branch containing the enrolment activity - first delivery) and the change directory to FirstDelivery
 
 ### Dependencies installation for the project:
 
 In the project directory, you can run:
 #### `npm i yargs`
 To install the dependencies for the project.
-All the files generated for the enrollments in the courses are saved in the directory called **_'enrolments'_**.
+
+**NOTE:** All the files generated for the enrollments in the courses are saved in the directory called **_'enrolments'_**.
 
 To execute the application and view the available courses, you can run:
 #### `node app.js` 
@@ -31,10 +32,13 @@ or
 ### Para acceder al proyecto:
 se debe cambiar a la rama node-fundamentals con el comando:
 #### `git checkout node-fundamentals`
+y cambiar al directorio FirstDelivery
 
 ### Dependencias del Proyecto:
-En el directorio del proyecto puedes ejecutar: `npm i yargs` para instalar las dependencias.
-Todos los archivos generados como prematriculas en los cursos se guardan en la carpeta **_'enrolments'_**.
+En el directorio del proyecto puedes ejecutar: 
+####`npm i yargs` 
+para instalar las dependencias.
+**NOTA:** Todos los archivos generados como prematriculas en los cursos se guardan en la carpeta **_'enrolments'_**.
 
 Para ejecutar la aplicación y para ver los cursos disponibles, puede ejecutar:
 #### `node app.js` 
