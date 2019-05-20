@@ -52,5 +52,6 @@ Para inscribirse en un curso de su interés:
 #### PASOS:
 1. Clonar repositorio
 2. Acceder al directorio: Nodejs-introduction/FirstDelivery
-3. ejecutar el comando `npm i yargs`
-4. ejecutar la aplicación
+3. cambiarse de la rama master a la rama node-fundamentals usando el comando `git checkout node-fundamentals`
+4. ejecutar el comando `npm i yargs`
+5. ejecutar la aplicación
