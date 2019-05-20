@@ -55,7 +55,7 @@ if(((argv._).length >= 1) && (argv._[0] === 'inscribir')) {
          console.log('No es posible realizar la inscripcion')
          return;
       };
-      console.log(subject);
+      console.log(`\nEl curso de ${subject.name} con codigo[${subject.id}] tiene una duracion de ${subject.duration} meses y un costo de: ${subject.cost} COP\n`);
       /* Creates the text structure for the file */
       let enrollmentDetails = 'Nombre del estudiante: ' + ip + '\n' +
          'Cédula del estudiante: ' + idn + '\n' + 'Id del curso: ' + subject.id + '\n' +
@@ -87,9 +87,13 @@ if(((argv._).length >= 1) && (argv._[0] === 'inscribir')) {
    /* Print all the courses offered and their information */
    //function definition: 
    let showCourses = () => {
+      console.log('\nTeconológico de Antioquia \n     Cursos disponibles:\n');      
+      let course, info = ''
       for(let i = 0; i < courses.length; i++) {
          setTimeout(function() {
-            console.log(courses[i])
+            course = courses[i]
+            info = `El curso codigo[${course.id}] - ${course.name} - tiene una duracion de ${course.duration} meses y un costo de: ${course.cost} COP`
+            console.log(info)
          }, i * 2000);
       };
    }; //function calling:
