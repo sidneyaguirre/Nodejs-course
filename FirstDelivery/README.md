@@ -4,15 +4,14 @@ This project is about getting information about available courses and being able
 it also has to generate a text file, saving the information of the enrolment and notify if it was or not successful.
 
 #### To access the project:
-It is necessary to execute:
+It is necessary to change directory to FirstDelivery and then to execute:
 #### `git checkout node-fundamentals`
-(the branch containing the enrolment activity - first delivery) and the change directory to FirstDelivery
+(the branch containing the enrolment activity - first delivery) 
 
 ### Dependencies installation for the project:
 
-In the project directory, you can run:
+To install the dependencies for the project, in the project directory, you can run:
 #### `npm i yargs`
-To install the dependencies for the project.
 
 **NOTE:** All the files generated for the enrollments in the courses are saved in the directory called **_'enrolments'_**.
 
@@ -30,14 +29,14 @@ or
 ***
 
 ### Para acceder al proyecto:
-se debe cambiar a la rama node-fundamentals con el comando:
+Estando en el directorio del proyecto, se debe cambiar al directorio FirstDelivery
+Luego se debe cambiar a la rama node-fundamentals con el comando:
 #### `git checkout node-fundamentals`
-y cambiar al directorio FirstDelivery
 
 ### Dependencias del Proyecto:
-En el directorio del proyecto puedes ejecutar: 
+Para instalar las dependencias, en el directorio del proyecto puedes ejecutar: 
 #### `npm i yargs` 
-para instalar las dependencias.
+
 **NOTA:** Todos los archivos generados como prematriculas en los cursos se guardan en la carpeta **_'enrolments'_**.
 
 Para ejecutar la aplicación y para ver los cursos disponibles, puede ejecutar:
