@@ -36,7 +36,7 @@ y cambiar al directorio FirstDelivery
 
 ### Dependencias del Proyecto:
 En el directorio del proyecto puedes ejecutar: 
-####`npm i yargs` 
+#### `npm i yargs` 
 para instalar las dependencias.
 **NOTA:** Todos los archivos generados como prematriculas en los cursos se guardan en la carpeta **_'enrolments'_**.
 
