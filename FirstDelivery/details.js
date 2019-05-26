@@ -26,30 +26,6 @@ let courses = [
       cost: 800, //COP
    },
    {
-      id: 14,
-      name: 'Fisica',
-      duration: 3, //month
-      cost: 2000, //COP
-   },
-   {
-      id: 15,
-      name: 'Lectoescritura',
-      duration: 2, //month
-      cost: 2000, //COP
-   },
-   {
-      id: 16,
-      name: 'Filosofia',
-      duration: 2, //month
-      cost: 2000, //COP
-   },
-   {
-      id: 17,
-      name: 'Biologia',
-      duration: 2, //month
-      cost: 2000, //COP
-   },
-   {
       id: 18,
       name: 'Dibujo',
       duration: 2, //month
@@ -63,8 +39,28 @@ let courses = [
    },
 ];
 
+
+/* Declares the details of the enrollment: 
+name of the interested person, 
+citizen card id number & course id */
+signup = {
+   name: {
+      alias: 'n',
+      demand: true,
+   },
+   idnumber: {
+      alias: 'i',
+      demand: true,
+   },
+   courseid: {
+      alias: 'c',
+      demand: true,
+   }
+}
+
 /* Exports the list of courses */
 module.exports = {
    courses,
+   signup,
 };
 
