@@ -18,7 +18,10 @@ To install the dependencies for the project, in the project directory, you can r
 To execute the application and view the available courses, you can run:
 #### `node app.js` 
 
-To enroll in a course of your interest
+To view the courses available:
+#### `node app.js oferta`
+
+To enroll in a course of your interest:
 #### `node app.js inscribir --name='name' --idnumber='id' --courseid='course'`
 or
 #### `node app.js inscribir -n='name' -i='id' -c='course'`
@@ -42,6 +45,9 @@ Para instalar las dependencias, en el directorio del proyecto puedes ejecutar:
 Para ejecutar la aplicación y para ver los cursos disponibles, puede ejecutar:
 #### `node app.js` 
 
+Para ver la oferta de cursos:
+#### `node app.js oferta`
+
 Para inscribirse en un curso de su interés:
 #### `node app.js inscribir --name='name' --idnumber='id' --courseid='course'` 
 ó
@@ -52,7 +58,6 @@ Para inscribirse en un curso de su interés:
 #### PASOS:
 1. Clonar repositorio
 2. Acceder al directorio: Nodejs-introduction
-3. cambiarse de la rama master a la rama node-fundamentals usando el comando `git checkout node-fundamentals`
-4. Acceder al directorio FirstDelivery
-5. ejecutar el comando `npm i yargs`
-6. ejecutar la aplicación
+3. Cambiarse de la rama master a la rama node-fundamentals usando el comando `git checkout node-fundamentals`
+4. Ejecutar el comando `npm i yargs`
+5. Ejecutar la aplicación

@@ -1,4 +1,4 @@
-const { signup_file, show_courses } = require('./index')
+const { signup_file, show_courses } = require('./app/enrolment')
 
 
 /* allows the implementation of the command line for the enrollment */
