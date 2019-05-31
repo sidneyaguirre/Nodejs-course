@@ -25,7 +25,7 @@ let signup_file = (course, name, identification) => {
       'Materia: ' + subject.name + '\n' +
       'Duracion: ' + subject.duration + ' meses \n' +
       'Costo: ' + subject.cost + ' COP\n' + '\n*COP: Pesos Colombianos';
-   let filename = 'prematricula_' + +ip + idn;
+   let filename = 'prematricula_' + ip + idn;
    let filepath = './enrolments/' + filename;
    if(fs.existsSync(filepath)) {
       let f = Math.round(Math.random() * 10)
