@@ -1,0 +1,40 @@
+
+{{>header}}
+{{#if failed}}
+<div class="failed">
+    {{{failed}}}
+</div>
+{{/if}}
+<div>
+    <form action="/store_student" method="post">
+        {{!-- <div>
+            <label for="courseId">Curso a Inscribir</label>
+            <select id="courseId" onclick="selectCourse">
+                <option selected>Seleccione...</option>
+            </select>
+        </div> --}}
+        <div>
+            <label for="document">Documento</label>
+            <input type="number" id="document" name="document" required placeholder="Número de Documento...">
+        </div>
+        <div>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" required placeholder="Nombres y Apellidos...">
+        </div>
+        <div>
+            <label for="email">Correo electrónico</label>
+            <input type="text" id="email" name="email" required placeholder="Correo...">
+        </div>
+        <div>
+            <label for="phone">Teléfono</label>
+            <input type="number" id="phone" name="phone" required placeholder="Número de teléfono..">
+        </div>
+        <div>
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+</div>
+<div class="back-button"></div>
+    <button><a href="/available_courses"><span>Volver</span></a></button>
+</div>
+{{>footer}}

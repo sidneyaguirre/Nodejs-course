@@ -1,0 +1,42 @@
+{{>header}}
+<div>
+  <div>
+    <h4>Detalles del Curso: {{list.name}}</h4>
+  </div>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>ID</td>
+        <td>{{list.id}}</td>
+      </tr>
+      <tr>
+        <td>Nombre</td>
+        <td>{{list.name}}</td>
+      </tr>
+      <tr>
+        <td>Modalidad</td>
+        <td>{{list.modality}}</td>
+      </tr>
+      <tr>
+        <td>Intensidad Horaria</td>
+        <td>{{list.workload}}</td>
+      </tr>
+      <tr>
+        <td>Estado</td>
+        <td>{{list.status}}</td>
+      </tr>
+      <tr>
+        <td>Descripción</td>
+        <td>{{list.description}}</td>
+      </tr>
+      <tr>
+        <td>Costo</td>
+        <td>{{list.cost}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="back-button">
+    <button><a href="/available_courses"><span>Volver</span></a></button>
+</div>
+{{>footer}}

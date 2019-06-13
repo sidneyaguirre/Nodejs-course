@@ -1,0 +1,26 @@
+{{>header}}
+<div class="available">
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Costo</th>
+            <th>Detalles</th>
+            <th>Opción</th>
+        </thead>
+        {{#each list}}
+        <tbody>
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.cost}}</td>
+                <td><a href="/course_details/{{this.id}}">Ver</a></td>
+                <td><a href="/signup/{{this.id}}">Inscribirme</a></td>
+            </tr>
+        </tbody>
+        {{/each}}
+    </table>
+</div>
+{{>footer}}

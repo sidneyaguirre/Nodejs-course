@@ -1,0 +1,23 @@
+
+{{>header}}
+<div class="enrolled-students">
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Opción</th>
+        </thead>
+        {{#each list}}
+        <tbody>
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td><a href="/enrolled/{{this.id}}">Ver Inscritos</a></td>
+            </tr>
+        </tbody>
+        {{/each}}
+    </table>
+</div>
+{{>footer}}

@@ -1,0 +1,34 @@
+
+{{>header}}
+<div class="allCourses">
+    {{#if success}}
+        <div class="success-course-creation">
+            {{{success-course-creation}}}
+        </div>
+    {{/if}}
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Intensidad</th>
+            <th>Modalidad</th>
+            <th>Descripción</th>
+            <th>Costo</th>
+            <th>Estado</th>
+        </thead>
+        {{#each list}}
+        <tbody>
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.workload}}</td>
+                <td>{{this.modality}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.cost}}</td>
+                <td>{{this.status}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{>footer}}

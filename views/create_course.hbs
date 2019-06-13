@@ -1,0 +1,51 @@
+
+{{>header}}
+{{#if failed}}
+<div class="failed">
+    {{{failed}}}
+</div>
+{{/if}}
+<form action="/store_course" method="post">
+    <div>
+        <div>
+            <label for="id">Identificador del curso</label>
+            <input type="number" name="id" required placeholder="ID">
+        </div>
+        <div>
+            <label for="name">Nombre del Curso</label>
+            <input type="text" name="name" required placeholder="Nombre">
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="modality">Modalidad</label>
+            <select name="modality">
+                <option selected>Seleccione...</option>
+                <option>Presencial</option>
+                <option>Virtual</option>
+            </select>
+        </div>
+        <div>
+            <label for="cost">Costo del Curso</label>
+            <input type="number" name="cost" required>
+        </div>
+    </div>
+    <div>
+        <div>
+            <label for="description">Descripción del Curso</label>
+            <textarea name="description" required rows="4"></textarea>
+        </div>
+        <div>
+            <label for="valor">Intensidad horaria</label>
+            <input type="number" name="workload" placeholder="Intensidad horaria">
+        </div>
+    </div>
+    <div>
+        <button type="submit">Guardar</button>
+    </div>
+</form>
+</div>
+<div class="back-button">
+    <button><a href="/all_courses"><span>Volver</span></a></button>
+</div>
+{{>footer}}

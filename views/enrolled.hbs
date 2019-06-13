@@ -1,0 +1,34 @@
+
+
+{{>header}}
+<div class="allEnrolled">
+    {{#if success}}
+        <div class="">
+            {{{success}}}
+        </div>
+    {{/if}}
+    <table class="table">
+        <thead>
+            <th>Número de Documento</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Opción</th>
+        </thead>
+        {{#each list}}
+        <tbody>
+            <tr>
+                <td>{{this.document}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+                <td><a href="/enrolled/{{this.documento}}">Eliminar</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div class="back-button">
+    <button><a href="/registered"><span>Volver</span></a></button>
+</div>
+{{>footer}}
