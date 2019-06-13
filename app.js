@@ -5,6 +5,7 @@ const hbs = require('hbs');
 const courses = require('./src/courses');
 const enrollment = require('./src/enrollment');
 const bodyParser = require('body-parser');
+const port = process.env.PORT || 3000
 
 const publicDir = path.join(__dirname, 'public');
 app.use(express.static(publicDir));
@@ -37,6 +38,6 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.listen(3000, () => {
-    console.log('Escuchando en el puerto 3000');
+app.listen(port, () => {
+    console.log(`Escuchando en el puerto ${port}`);
 });
