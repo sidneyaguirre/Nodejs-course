@@ -85,6 +85,7 @@ exports.signup = (req, res) => {
 exports.signing = (req, res) => {
     const getPeople = students();
     const getStudentsPerCourse = enrolledPerCourse();
+console.log(getStudentsPerCourse);
 
     const studentCourse = {
         person_id: req.body.document,
@@ -98,8 +99,9 @@ exports.signing = (req, res) => {
     };
 console.log(`param: ${req.body.course_id}`);
 
-    const exists = getPeople.find(person => person.document === req.body.document);
-    const alreadysigned = getStudentsPerCourse.find(search => (search.person_id ===  req.body.document) && (search.course_id ===  req.body.id));
+    const exists = getPeople.find(person => person.document === student.document);
+    const alreadysigned = getStudentsPerCourse.filter(search => 
+        search.person_id === req.body.document && search.course_id ===  req.body.course_id);
     console.log(exists);
     console.log(`resultado de existe: ${alreadysigned}`);
 
@@ -110,7 +112,7 @@ console.log(`param: ${req.body.course_id}`);
         saveEnrollment(getStudentsPerCourse)
         res.render('successful', { success: 'Guardado con éxito' });
     } else if(exists) {
-        if(!alreadysigned) {
+        if(alreadysigned.length === 0) {
             getStudentsPerCourse.push(studentCourse);
             saveEnrollment(getStudentsPerCourse)
             res.render('successful', { success: 'Guardado con éxito' });
@@ -123,12 +125,10 @@ console.log(`param: ${req.body.course_id}`);
 /* To delete a person registered in a course */
 exports.removeFromCourse = (req, res) => {
     let coursePerson = enrolledPerCourse();
-  
     const newData = coursePerson.filter(search => !(
       search.course_id === req.params.course_id && search.person_id === req.params.person_id));
     coursePerson = newData;
     console.log(newData);
-    
     //saveCoursesPerPerson(coursePerson);
     res.redirect('registered');
   };

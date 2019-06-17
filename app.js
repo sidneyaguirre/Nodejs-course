@@ -5,7 +5,7 @@ const hbs = require('hbs');
 const courses = require('./src/courses');
 const enrollment = require('./src/enrollment');
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3000
 
 const publicDir = path.join(__dirname, 'public');
 app.use(express.static(publicDir));
@@ -30,7 +30,7 @@ app.get('/enrolled/:id', enrollment.registeredPeople);
 app.get('/signup/:id', enrollment.signup);
 
 app.post('/store_course', courses.store);
-app.post('/deleted_people', enrollment.removeFromCourse);
+app.post('/deleted_people/:id', enrollment.removeFromCourse);
 app.post('/store_student', enrollment.signing);
 
 app.get('/', (req, res) => {
