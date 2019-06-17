@@ -1,5 +1,6 @@
 var fs = require('fs');
 
+/* to see all the courses */
 const courses = () => {
     try {
         return cList = require('../data/courses.json');
@@ -8,6 +9,7 @@ const courses = () => {
     };
 };
 
+/* To see all the registered people */
 const students = () => {
     try {
         return studentsList = require('../data/registered.json');
@@ -16,20 +18,40 @@ const students = () => {
     };
 };
 
+
+/* To see the relation between course and enrolled person */
 const enrolledPerCourse = () => {
     try {
-        return studentsList = require('../data/students_per_course.json');
+        return enrolled = require('../data/students_per_course.json');
     } catch(err) {
-        return studentsList = [];
+        return enrolled = [];
     };
 };
 
+const savePerson = (person) => {
+    const data = JSON.stringify(person);
+        fs.writeFile('data/registered.json', data, (err) => {
+            if(err) throw(err);
+            console.log(`registered successful`)
+        });
+}
+
+const saveEnrollment = (info) => {
+    const infoEnroll = JSON.stringify(info);
+    fs.writeFile('data/students_per_course.json', infoEnroll, (err) => {
+        if(err) throw(err);
+        console.log(`enrollment successful`)
+    });
+}
+
+/* To see all the available courses */
 exports.people = (req, res) => {
     let availableCourses = courses();
     let available = availableCourses.filter(est => est.status == "disponible");
     res.render('registered', { list: available });
 };
 
+/* To see the people registered in A SPECIFIC Course */
 exports.registeredPeople = (req, res) => {
     let enrolledPeople = []
     let list = students();
@@ -47,18 +69,26 @@ exports.registeredPeople = (req, res) => {
     };
 };
 
+/* To render all the registered people */
 exports.allPeople = () => {
     res.render('registered', { list: students() });
-}
+};
+
+exports.signup = (req, res) => {
+    let list = courses();
+    let info = list.find(subject => subject.id === req.params.id);
+    res.render('signup', { list: info });
+};
 
 
+/* To make the enrollment process */
 exports.signing = (req, res) => {
-    let getPeople = students();
-    let getstudentsPerCourse = enrolledPerCourse();
-    let course = req.params.id;
+    const getPeople = students();
+    const getStudentsPerCourse = enrolledPerCourse();
+
     const studentCourse = {
         person_id: req.body.document,
-        course_id: course,
+        course_id: req.body.course_id,
     }
     const student = {
         document: req.body.document,
@@ -66,40 +96,52 @@ exports.signing = (req, res) => {
         email: req.body.email,
         phone: req.body.phone,
     };
-    const signed = getstudentsPerCourse.find(person => person.person_id === studentCourse.person_id);
-    const exists = getPeople.find(search => search.document === student.document);
+console.log(`param: ${req.body.course_id}`);
+
+    const exists = getPeople.find(person => person.document === req.body.document);
+    const alreadysigned = getStudentsPerCourse.find(search => (search.person_id ===  req.body.document) && (search.course_id ===  req.body.id));
+    console.log(exists);
+    console.log(`resultado de existe: ${alreadysigned}`);
+
     if(!exists) {
         getPeople.push(student);
-        const data = JSON.stringify(getPeople);
-        fs.writeFile('data/registered.json', data, (err) => {
-            if(err) throw(err);
-        });
-        res.render('successful_signing', { success: 'Guardado con éxito' });
-    } else {
-        res.render('error', { failed: 'error' });
+        savePerson(getPeople)
+        getStudentsPerCourse.push(studentCourse);
+        saveEnrollment(getStudentsPerCourse)
+        res.render('successful', { success: 'Guardado con éxito' });
+    } else if(exists) {
+        if(!alreadysigned) {
+            getStudentsPerCourse.push(studentCourse);
+            saveEnrollment(getStudentsPerCourse)
+            res.render('successful', { success: 'Guardado con éxito' });
+        } else {
+            res.render('unsuccessful', { failed: 'error' });
+        };
     };
-    if(!signed) {
-        getstudentsPerCourse.push(studentCourse);
-        const infoEnroll = JSON.stringify(getstudentsPerCourse);
-        fs.writeFile('data/students_per_course.json', infoEnroll, (err) => {
-            if(err) throw(err);
-        });
-        res.render('successful_signing', { success: 'Guardado con éxito' });
-    } else {
-        res.render('error', { failed: 'error' });
-    };
+}
 
-};
+/* To delete a person registered in a course */
+exports.removeFromCourse = (req, res) => {
+    let coursePerson = enrolledPerCourse();
+  
+    const newData = coursePerson.filter(search => !(
+      search.course_id === req.params.course_id && search.person_id === req.params.person_id));
+    coursePerson = newData;
+    console.log(newData);
+    
+    //saveCoursesPerPerson(coursePerson);
+    res.redirect('registered');
+  };
 
-
-exports.deletePeople = (req, res) => {
-    let studentToDelete = req.body.document;
-    let inCourse = enrolledPerCourse()
-    let signed = inCourse.filter(person => person.document !== studentToDelete);
-    if(signed) {
-        fs.writeFile('../data/students_per_course.json', signed, (err) => {
-            if(err) throw(err);
-        });
-        people();
-    };
-};
+exports.updateCourseStatus = (req, res) => {
+    const coursesList = allCourses();
+  
+    const found = coursesList.find(search => search.id === req.params.id);
+    if (found.state = 'cerrado') {
+      found.state = 'disponible'
+    } else found.state = 'cerrado'
+  
+    saveCourse(coursesList);
+    res.redirect('/courses');
+  };
+  
