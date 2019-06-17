@@ -15,6 +15,7 @@
             <th>Descripción</th>
             <th>Costo</th>
             <th>Estado</th>
+            <th>Acción</th>
         </thead>
         {{#each list}}
         <tbody>
@@ -26,6 +27,7 @@
                 <td>{{this.description}}</td>
                 <td>{{this.cost}}</td>
                 <td>{{this.status}}</td>
+                <td><a href="/update_course_status/{{this.id}}">Actualizar Estado</a></td>
             </tr>
             {{/each}}
         </tbody>

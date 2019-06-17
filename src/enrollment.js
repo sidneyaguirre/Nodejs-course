@@ -133,15 +133,4 @@ exports.removeFromCourse = (req, res) => {
     res.redirect('registered');
   };
 
-exports.updateCourseStatus = (req, res) => {
-    const coursesList = allCourses();
-  
-    const found = coursesList.find(search => search.id === req.params.id);
-    if (found.state = 'cerrado') {
-      found.state = 'disponible'
-    } else found.state = 'cerrado'
-  
-    saveCourse(coursesList);
-    res.redirect('/courses');
-  };
   

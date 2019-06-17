@@ -1,7 +1,7 @@
 {
   "name": "nodejs-course",
   "version": "1.0.0",
-  "description": "",
+  "description": "#### Web App: [educaciontdea](https://educaciontdea.herokuapp.com/)",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,5 +22,6 @@
     "hbs": "^4.0.4",
     "nodemon": "^1.19.1",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {}
 }

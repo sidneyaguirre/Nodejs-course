@@ -15,6 +15,14 @@ exports.listAvailableCourses = (req, res) => {
     res.render('available_courses', { list: available });
 };
 
+const update = (info) => {
+    const updatedStatus = JSON.stringify(info);
+    fs.writeFile('data/courses.json', updatedStatus, (err) => {
+        if(err) throw(err);
+        console.log('Curso guardado correctamente');
+    });
+};
+
 exports.listCourses = (req, res) => {
     res.render('all_courses', { list: courses() });
 };
@@ -52,15 +60,14 @@ exports.store = (req, res) => {
 
 exports.updateCourseStatus = (req, res) => {
     const coursesList = courses();
+    console.log(coursesList);
 
     const found = coursesList.find(search => search.id === req.params.id);
-    if(found.state = 'cerrado') {
-        found.state = 'disponible'
-    } else found.state = 'cerrado'
-    const data = JSON.stringify(courses);
-    fs.writeFile('../data/courses.json', data, (err) => {
-        if(err) throw(err);
-        console.log('Curso guardado correctamente');
-    });
-    res.redirect('/all_courses');
+    console.log(found.status);
+
+    if(found.status === 'cerrado') {
+        found.status = 'disponible';
+    } else if(found.status === 'disponible') {found.status = 'cerrado'};
+    update(coursesList);
+    res.render('all_courses', { list: courses() });
 };

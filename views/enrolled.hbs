@@ -1,12 +1,13 @@
-
-
 {{>header}}
 <div class="allEnrolled">
     {{#if success}}
-        <div class="">
-            {{{success}}}
-        </div>
+    <div class="">
+        {{{success}}}
+    </div>
     {{/if}}
+    <div>
+        <h3>Inscritos en el curso {{course.name}}</h3>
+    </div>
     <table class="table">
         <thead>
             <th>Número de Documento</th>
@@ -22,13 +23,14 @@
                 <td>{{this.name}}</td>
                 <td>{{this.email}}</td>
                 <td>{{this.phone}}</td>
-                <td><a href="/registered">Eliminar</a></td>
+                <td><a href="/deleted_people/{{this.course_id}}/{{this.document}}" role="button">Eliminar del
+                        curso</a></td>
             </tr>
             {{/each}}
         </tbody>
     </table>
 </div>
 <div class="back-button">
-    <button><a href="/deleted_people"><span>Volver</span></a></button>
+    <button><a href="/enrolled"><span>Volver</span></a></button>
 </div>
 {{>footer}}

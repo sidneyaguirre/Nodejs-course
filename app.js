@@ -28,9 +28,10 @@ app.get('/create_course', (req, res) => {
 app.get('/registered', enrollment.people);
 app.get('/enrolled/:id', enrollment.registeredPeople);
 app.get('/signup/:id', enrollment.signup);
+app.get('/deleted_people/:course/:document', enrollment.removeFromCourse);
+app.get('/update_course_status/:id', courses.updateCourseStatus);
 
 app.post('/store_course', courses.store);
-app.post('/deleted_people/:id', enrollment.removeFromCourse);
 app.post('/store_student', enrollment.signing);
 
 app.get('/', (req, res) => {
