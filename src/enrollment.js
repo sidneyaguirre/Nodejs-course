@@ -125,12 +125,12 @@ console.log(`param: ${req.body.course_id}`);
 /* To delete a person registered in a course */
 exports.removeFromCourse = (req, res) => {
     let coursePerson = enrolledPerCourse();
+  
     const newData = coursePerson.filter(search => !(
-      search.course_id === req.params.course_id && search.person_id === req.params.person_id));
+      search.course_id === req.params.course_id && search.person_id === req.params.document));
     coursePerson = newData;
-    console.log(newData);
-    //saveCoursesPerPerson(coursePerson);
-    res.redirect('registered');
+    saveEnrollment(coursePerson);
+    res.redirect('/enrolled');
   };
 
   
