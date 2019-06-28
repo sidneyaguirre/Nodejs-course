@@ -3,7 +3,7 @@ var fs = require('fs');
 
 const courses = () => {
     try {
-        return cList = require('../data/courses.json');
+        return cList = require('../../data/courses.json');
     } catch(err) {
         return cList = [];
     };

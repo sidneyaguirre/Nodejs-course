@@ -3,7 +3,7 @@ var fs = require('fs');
 /* to see all the courses */
 const courses = () => {
     try {
-        return cList = require('../data/courses.json');
+        return cList = require('../../data/courses.json');
     } catch(err) {
         return cList = [];
     };
@@ -12,7 +12,7 @@ const courses = () => {
 /* To see all the registered people */
 const students = () => {
     try {
-        return studentsList = require('../data/registered.json');
+        return studentsList = require('../../data/registered.json');
     } catch(err) {
         return studentsList = [];
     };
@@ -22,7 +22,7 @@ const students = () => {
 /* To see the relation between course and enrolled person */
 const enrolledPerCourse = () => {
     try {
-        return enrolled = require('../data/students_per_course.json');
+        return enrolled = require('../../data/students_per_course.json');
     } catch(err) {
         return enrolled = [];
     };
@@ -34,6 +34,17 @@ const savePerson = (person) => {
             if(err) throw(err);
             console.log(`registered successful`)
         });
+}
+
+const getCourseName = (course) => {
+    let listCourses = courses();
+    let result = ""
+    listCourses.find(find => {
+        find.id === course;
+        console.log(`nombre del curso ${find.id} es ${find.name}`);
+        result = find.name;
+    });
+    return result;
 }
 
 const saveEnrollment = (info) => {
@@ -48,16 +59,20 @@ const saveEnrollment = (info) => {
 exports.people = (req, res) => {
     let availableCourses = courses();
     let available = availableCourses.filter(est => est.status == "disponible");
-    res.render('registered', { list: available });
+    res.render('signed_people', { list: available });
 };
 
-/* To see the people registered in A SPECIFIC Course */
+/* To see the people signed in A SPECIFIC Course */
 exports.registeredPeople = (req, res) => {
-    let enrolledPeople = []
+    let enrolledPeople = [];
     let list = students();
-    let inCourse = enrolledPerCourse()
+    let inCourse = enrolledPerCourse();
+    let listCourses = courses();
+
     let signed = inCourse.filter(subject => subject.course_id == req.params.id);
     if(signed) {
+        let course_name = listCourses.find(subject => subject.id == req.params.id)
+        console.log(course_name.id);
         list.forEach(person => {
             signed.forEach(personRegistered => {
                 if(person.document == personRegistered.person_id) {
@@ -65,13 +80,13 @@ exports.registeredPeople = (req, res) => {
                 };
             });
         });
-        res.render('enrolled', { list: enrolledPeople });
+        res.render('enrolled', {course: course_name, list: enrolledPeople });
     };
 };
 
 /* To render all the registered people */
 exports.allPeople = () => {
-    res.render('registered', { list: students() });
+    res.render('signed_people', { list: students() });
 };
 
 exports.signup = (req, res) => {
@@ -123,14 +138,23 @@ console.log(`param: ${req.body.course_id}`);
 }
 
 /* To delete a person registered in a course */
-exports.removeFromCourse = (req, res) => {
-    let coursePerson = enrolledPerCourse();
-  
-    const newData = coursePerson.filter(search => !(
-      search.course_id === req.params.course_id && search.person_id === req.params.document));
-    coursePerson = newData;
-    saveEnrollment(coursePerson);
-    res.redirect('/enrolled');
+exports.removePersonFromCourse = (req, res) => {
+    let list = students();
+    let listCourses = courses();
+
+    let inCourse = enrolledPerCourse();
+    let result = listCourses.find(find => {
+        find.course_id === req.params.id && find.person_id === req.params.document;
+        console.log(`nombre del curso ${find.course_id} es ${find.person_id}`);
+    });
+    console.log(result.course_id);
+    
+    const newData = inCourse.filter(search => !(
+      search.course_id === req.params.id && search.person_id === req.params.document));
+    inCourse = newData;
+    saveEnrollment(inCourse);
+    //res.redirect('/enrolled');
+    registeredPeople();
   };
 
   

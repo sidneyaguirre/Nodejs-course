@@ -1,3 +1,4 @@
+{{!-- this is the actual list of all people enrolled in a course --}}
 {{>header}}
 <div class="allEnrolled">
     {{#if success}}
@@ -6,10 +7,11 @@
     </div>
     {{/if}}
     <div>
-        <h3>Inscritos en el curso {{course.name}}</h3>
+        <h3>Inscritos en el curso de {{course.name}}</h3>
     </div>
     <table class="table">
         <thead>
+            <th>course id</th>
             <th>Número de Documento</th>
             <th>Nombre</th>
             <th>Correo</th>
@@ -19,18 +21,19 @@
         {{#each list}}
         <tbody>
             <tr>
+                <td>{{course.id}}</td>
                 <td>{{this.document}}</td>
                 <td>{{this.name}}</td>
                 <td>{{this.email}}</td>
                 <td>{{this.phone}}</td>
-                <td><a href="/deleted_people/{{this.course_id}}/{{this.document}}" role="button">Eliminar del
-                        curso</a></td>
+                <td><a href="/deleted_people/{{course.id}}/{{this.document}}" role="button">Eliminar del curso</a></td>
             </tr>
+            {{!-- <td><a href="/deleted_people/{{course.course_id}}/{{this.document}}" role="button">Eliminar del curso</a></td> --}}
             {{/each}}
         </tbody>
     </table>
 </div>
 <div class="back-button">
-    <button><a href="/registered"><span>Volver</span></a></button>
+    <button><a href="/signed_people"><span>Volver</span></a></button>
 </div>
 {{>footer}}

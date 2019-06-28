@@ -2,42 +2,32 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const hbs = require('hbs');
-const courses = require('./src/courses');
-const enrollment = require('./src/enrollment');
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000
+const routes = require('./src/routes')
 
-const publicDir = path.join(__dirname, 'public');
+require('./src/config/config')
+
+const publicDir = path.join(__dirname, './public');
+const partials = path.join(__dirname, './partials');
+const nodeModulesDir = path.join(__dirname, 'node_modules');
+
 app.use(express.static(publicDir));
-app.use(bodyParser.urlencoded({ extended: false }));
-const partials = path.join(__dirname, 'partials');
 hbs.registerPartials(partials);
-
 //const helpers = path.join(__dirname, 'helpers');
+app.use(bodyParser.urlencoded({ extended: false }));
+
+/* routes */
+app.use(routes);
+
+/* bootstrap */
+app.use('/css', express.static(path.join(nodeModulesDir, '/bootstrap/dist/css')));
+app.use('/js', express.static(path.join(nodeModulesDir, '/bootstrap/dist/js')));
 
 /* hbs Configuration, it looks for files in views directory */
 app.set('view engine', 'hbs');
 
-app.get('/available_courses', courses.listAvailableCourses);
-app.get('/all_courses', courses.listCourses);
-app.get('/course_details/:id', courses.courseDetails);
-app.get('/create_course', (req, res) => {
-    console.log(req.param.toString);
-    res.render('create_course')
-});
-app.get('/registered', enrollment.people);
-app.get('/enrolled/:id', enrollment.registeredPeople);
-app.get('/signup/:id', enrollment.signup);
-app.get('/deleted_people/:course/:document', enrollment.removeFromCourse);
-app.get('/update_course_status/:id', courses.updateCourseStatus);
-
-app.post('/store_course', courses.store);
-app.post('/store_student', enrollment.signing);
-
-app.get('/', (req, res) => {
-    res.render('index');
+app.listen(process.env.PORT, () => {
+    console.log(`Escuchando en el puerto ${process.env.PORT}`);
 });
 
-app.listen(port, () => {
-    console.log(`Escuchando en el puerto ${port}`);
-});
+
