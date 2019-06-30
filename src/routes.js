@@ -16,7 +16,7 @@ router.post('/store_course', courseController.store);
 router.get('/signed_people', enrollmentController.people);
 router.get('/enrolled/:id', enrollmentController.registeredPeople);
 router.get('/signup/:id', enrollmentController.signup);
-router.get('/deleted_people/:course/:document', enrollmentController.removePersonFromCourse);
+router.get('/remove_person/:course/:document', enrollmentController.removePersonFromCourse);
 router.post('/store_student', enrollmentController.signing);
 
 router.get('/', (req, res) => {

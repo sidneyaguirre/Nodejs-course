@@ -71,16 +71,16 @@ exports.registeredPeople = (req, res) => {
 
     let signed = inCourse.filter(subject => subject.course_id == req.params.id);
     if(signed) {
-        let course_name = listCourses.find(subject => subject.id == req.params.id)
-        console.log(course_name.id);
+        let info = listCourses.find(subject => subject.id == req.params.id)
+        console.log(info.id);
         list.forEach(person => {
             signed.forEach(personRegistered => {
                 if(person.document == personRegistered.person_id) {
                     enrolledPeople.push(person);
                 };
             });
-        });
-        res.render('enrolled', {course: course_name, list: enrolledPeople });
+        });        
+        res.render('enrolled', {course: info, list: enrolledPeople});
     };
 };
 
@@ -139,21 +139,17 @@ console.log(`param: ${req.body.course_id}`);
 
 /* To delete a person registered in a course */
 exports.removePersonFromCourse = (req, res) => {
-    let list = students();
-    let listCourses = courses();
-
     let inCourse = enrolledPerCourse();
-    let result = listCourses.find(find => {
+    /* let result = inCourse.find(find => {
         find.course_id === req.params.id && find.person_id === req.params.document;
         console.log(`nombre del curso ${find.course_id} es ${find.person_id}`);
     });
-    console.log(result.course_id);
+    console.log(result.course_id); */
     
     const newData = inCourse.filter(search => !(
       search.course_id === req.params.id && search.person_id === req.params.document));
     inCourse = newData;
     saveEnrollment(inCourse);
-    //res.redirect('/enrolled');
     registeredPeople();
   };
 

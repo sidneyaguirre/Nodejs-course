@@ -14,6 +14,10 @@ const nodeModulesDir = path.join(__dirname, 'node_modules');
 app.use(express.static(publicDir));
 hbs.registerPartials(partials);
 //const helpers = path.join(__dirname, 'helpers');
+/* /to use the images: */
+app.use(express.static(path.join(publicDir, './assets')));
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 /* routes */
