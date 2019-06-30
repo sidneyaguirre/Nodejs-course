@@ -60,11 +60,7 @@ exports.store = (req, res) => {
 
 exports.updateCourseStatus = (req, res) => {
     const coursesList = courses();
-    console.log(coursesList);
-
     const found = coursesList.find(search => search.id === req.params.id);
-    console.log(found.status);
-
     if(found.status === 'cerrado') {
         found.status = 'disponible';
     } else if(found.status === 'disponible') {found.status = 'cerrado'};

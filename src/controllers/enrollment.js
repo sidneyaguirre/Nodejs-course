@@ -41,7 +41,6 @@ const getCourseName = (course) => {
     let result = ""
     listCourses.find(find => {
         find.id === course;
-        console.log(`nombre del curso ${find.id} es ${find.name}`);
         result = find.name;
     });
     return result;
@@ -72,7 +71,6 @@ exports.registeredPeople = (req, res) => {
     let signed = inCourse.filter(subject => subject.course_id == req.params.id);
     if(signed) {
         let info = listCourses.find(subject => subject.id == req.params.id)
-        console.log(info.id);
         list.forEach(person => {
             signed.forEach(personRegistered => {
                 if(person.document == personRegistered.person_id) {
@@ -100,8 +98,6 @@ exports.signup = (req, res) => {
 exports.signing = (req, res) => {
     const getPeople = students();
     const getStudentsPerCourse = enrolledPerCourse();
-console.log(getStudentsPerCourse);
-
     const studentCourse = {
         person_id: req.body.document,
         course_id: req.body.course_id,
@@ -112,13 +108,9 @@ console.log(getStudentsPerCourse);
         email: req.body.email,
         phone: req.body.phone,
     };
-console.log(`param: ${req.body.course_id}`);
-
     const exists = getPeople.find(person => person.document === student.document);
     const alreadysigned = getStudentsPerCourse.filter(search => 
         search.person_id === req.body.document && search.course_id ===  req.body.course_id);
-    console.log(exists);
-    console.log(`resultado de existe: ${alreadysigned}`);
 
     if(!exists) {
         getPeople.push(student);

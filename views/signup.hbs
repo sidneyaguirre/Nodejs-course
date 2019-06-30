@@ -4,7 +4,7 @@
   {{{failed}}}
 </div>
 {{/if}}
-<div>
+<section>
   <div>
     <h4>Detalles del Curso: {{list.name}}</h4>
   </div>
@@ -40,45 +40,48 @@
       </tr>
     </tbody>
   </table>
-</div>
-<div class="form">
-  <h3>Inscripción</h3>
-</div>
-<div>
+</section>
+<section>
+  <div>
+    <h3>Inscripción</h3>
+  </div>
   <form action="/store_student" method="post">
     <div class="form-row">
-      <div class="form-group col-md-2">
+      <div class="form-group col-md-6">
         <label for="name">Id del Curso</label>
         <input type="text" class="form-control" id="course_id" name="course_id" value={{list.id}} readonly="readonly" />
       </div>
-      <div class="form-group col-md-10">
+      <div class="form-group col-md-6">
         <label for="name">Nombre</label>
-        <input type="text" class="form-group" id="name" name="name" required placeholder="Nombres y Apellidos">
+        <input type="text" class="form-control" id="name" name="name" required placeholder="Nombres y Apellidos">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="document">Documento</label>
-        <input type="number" class="form-control" id="document" name="document" required
+        <input type="number" class="form-control" id="document" name="document" min="1" pattern="^[0-9]+" required
           placeholder="Número de Documento">
       </div>
       <div class="form-group col-md-6">
         <label for="phone">Teléfono</label>
-        <input type="number" class="form-control" id="phone" name="phone" required placeholder="Número de teléfono">
+        <input type="number" class="form-control" id="phone" name="phone" min="1" pattern="^[0-9]+" required
+          placeholder="Número de teléfono">
       </div>
     </div>
-    <div class="form-group">
-      <label for="email">Correo electrónico</label>
-      <input type="email" class="form-control" id="email" name="email" required placeholder="Correo">
-    </div>
-
-    <div>
-      <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="email">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" required placeholder="Correo">
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+      </div>
     </div>
   </form>
-</div>
-<div class="back-button">
-  <button class="btn"><a href="/available_courses"><span>Volver</span></a></button>
-</div>
-
+</section>
+<section>
+  <div class="back-button">
+    <button class="btn"><a href="/available_courses"><span>Volver</span></a></button>
+  </div>
+</section>
 {{>footer}}

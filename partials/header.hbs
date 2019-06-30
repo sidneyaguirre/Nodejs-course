@@ -6,25 +6,37 @@
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="/styles/styles.css" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script><link rel="stylesheet" href="/styles/styles.css" type="text/css">
 </head>
 
 <body>
+  <header>
   <div>
     <img class="img-fluid" src="../assets/logoheader.jpg" alt="logo">
+    <img class="img-fluid" src="../assets/logo.jpg" alt="bandera">
+    <img class="img-fluid" src="../assets/tdea.jpeg" alt="">
   </div>
-  <header class="header">
-    <div class="navbar">
-      <ul class="nav">
-        <li class="nav-item"><a href="/"><span>Inicio</span></a></li>
-        <li class="nav-item"><a href="/all_courses"><span>Cursos</span></a></li>
-        <li class="nav-item"><a href="/available_courses"><span>Cursos Disponibles</span></a></li>
-        <li class="nav-item"><a href="create_course"><span>Crear Curso</span></a></li>
-        <li class="nav-item"><a href="signed_people"><span>Inscritos</span></a></li>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span>Inicio</span></a></li>
+        <li><a href="/all_courses"><span>Cursos</span></a></li>
+        <li><a href="/available_courses"><span>Cursos Disponibles</span></a></li>
+        <li><a href="create_course"><span>Crear Curso</span></a></li>
+        <li><a href="signed_people"><span>Inscritos</span></a></li>
       </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input class="form-control" type="text" id="usr" name="usr" placeholder="Usuario">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="psw" name="psw" placeholder="Contraseña">
+        </div>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+      </form>
     </div>
-  </header>
+    </nav>
+    </header>
